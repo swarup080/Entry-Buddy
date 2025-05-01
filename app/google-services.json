@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "800843006361",
+    "project_id": "entrybuddy",
+    "storage_bucket": "entrybuddy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800843006361:android:49014b1d7088847fa9d308",
+        "android_client_info": {
+          "package_name": "com.swarup.entrybuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7bYiMPSfTubEk0KmtaFN7drYJ34a3HzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
