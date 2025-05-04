@@ -27,8 +27,8 @@ class RegisterViewModel : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val dbRef = FirebaseDatabase.getInstance().getReference("admin")
+    private val usersRef = FirebaseDatabase.getInstance().getReference("users")
     private lateinit var sharedPrefManager: SharedPrefManager
-
 
     val registrationStatus = MutableLiveData<Boolean>()
 
@@ -52,12 +52,23 @@ class RegisterViewModel : ViewModel() {
                     e.printStackTrace()
                     ""
                 }
-                Log.d("TAG", "registerUser: $avatarUrl")
-                // Step 3: Save user data in Firebase Realtime Database
+
+                // Step 3: Save full user data in /admin/{uid}
                 val updatedData = data.copy(id = uid, avatar = avatarUrl, time = currentTime)
                 dbRef.child(uid).setValue(updatedData).await()
+
+                // Step 4: Save UID and role in /users/{uid}
+                val userMap = mapOf(
+                    "uid" to uid,
+                    "email" to data.email,
+                    "role" to data.role
+                )
+                usersRef.child(uid).setValue(userMap).await()
+
+                // Step 5: Save role locally
                 sharedPrefManager = SharedPrefManager(context)
                 sharedPrefManager.saveUserRole(data.role)
+
                 registrationStatus.postValue(true)
 
             } catch (e: Exception) {

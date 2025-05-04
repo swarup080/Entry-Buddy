@@ -10,6 +10,7 @@ data class RegisterData(
     val avatar: String = "",
     val role: String = "",
     val address: String = "",
-    val time: String = ""
+    val time: String = "",
+    val coin: String = ""
 )
 

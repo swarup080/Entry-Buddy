@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, AuthActivity::class.java))
                 finish()
             }
-        }, 3000)
+        }, 1500)
     }
 
     private fun checkRoleAndNavigate(role: String) {

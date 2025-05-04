@@ -116,7 +116,8 @@ class RegisterActivity : AppCompatActivity() {
                 avatar = "",
                 role = "Admin",
                 address = address,
-                time = ""
+                time = "",
+                coin = "10"
             )
             dialog = DialogUtils.showLoadingDialog(this)
             viewModel.registerUser(this, data, password, selectedImageUri)
@@ -127,7 +128,10 @@ class RegisterActivity : AppCompatActivity() {
             dialog.dismiss()
             if (isSuccess) {
                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, AdminDashboardActivity::class.java))
+                val intent = Intent(this, AdminDashboardActivity::class.java)
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
                 finish()
             } else {
                 Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()

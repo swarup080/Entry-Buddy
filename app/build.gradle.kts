@@ -57,4 +57,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     // AppWrite for image store
     implementation("io.appwrite:sdk-for-android:6.1.0")
+    // For Image Loading
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
